@@ -1,8 +1,6 @@
 import React from 'react'
 import FormNote from './FormNote'
 import InputBar from './InputBar'
-// import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
 
 const nameRegex = /[^\p{L} ]/u
 const ICregex1 = /\d{9}/
@@ -10,13 +8,18 @@ const ICregex2 = /\d{12}/
 function copyObjectOf(obj) {
     return JSON.parse(JSON.stringify(obj))
 }
-// const fieldNames = {
-//     gender: 'gender',
-//     iN: 'identityNumber',
-//     dob: 'dob',
-//     regNum: 'registrationNum',
-//     phoneNum: 'phoneNum'
-// }
+const fieldNames = {
+    gender: 'gender',
+    iN: 'identityNumber',
+    dob: 'dob',
+    regNum: 'registrationNumber',
+    phoneNum: 'phoneNumber',
+    name: 'name',
+    email: 'email',
+    ngayKhaiBao: 'ngayKhaiBao',
+    vungDich: 'vungdich',
+    symtoms: 'symtoms',
+}
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -59,92 +62,92 @@ class Form extends React.Component {
         let formIsValid = true;
 
         //Name
-        if (!fields['name']) {
+        if (!fields[fieldNames.name]) {
             formIsValid = false;
-            errors['name'] = 'Hãy điền trường còn trống';
+            errors[fieldNames.name] = 'Hãy điền trường còn trống';
         }
 
-        if (typeof fields['name'] !== 'undefined') {
-            if (fields['name'].match(nameRegex)) {
+        if (typeof fields[fieldNames.name] !== 'undefined') {
+            if (fields[fieldNames.name].match(nameRegex)) {
                 formIsValid = false;
-                errors['name'] = 'Chỉ các chữ cái';
+                errors[fieldNames.name] = 'Chỉ các chữ cái';
             }
-            if (fields['name'].match(/\s{2,}/u)) {
+            if (fields[fieldNames.name].match(/\s{2,}/u)) {
                 formIsValid = false;
-                errors['name'] = 'Tên không hợp lệ'
+                errors[fieldNames.name] = 'Tên không hợp lệ'
             }
         }
 
 
 
         // Date of birth
-        if (!this.state.fields['dob']) {
+        if (!this.state.fields[fieldNames.dob]) {
             formIsValid = false;
-            errors['dob'] = 'Chọn ngày sinh'
+            errors[fieldNames.dob] = 'Chọn ngày sinh'
         }
 
         // CMND
-        if (!fields['identityNumber']) {
+        if (!fields[fieldNames.iN]) {
             formIsValid = false;
-            errors['identityNumber'] = 'Hãy điền trường còn trống';
+            errors[fieldNames.iN] = 'Hãy điền trường còn trống';
         }
 
-        if (typeof fields['identityNumber'] !== 'undefined') {
-            if (!(fields['identityNumber'].match(ICregex1) || fields['identityNumber'].match(ICregex2))) {
+        if (typeof fields[fieldNames.iN] !== 'undefined') {
+            if (!(fields[fieldNames.iN].match(ICregex1) || fields[fieldNames.iN].match(ICregex2))) {
                 formIsValid = false;
-                errors['identityNumber'] = 'CCCD/CMT không hợp lệ';
+                errors[fieldNames.iN] = 'CCCD/CMT không hợp lệ';
             }
         }
         // gender
-        if (this.state.fields['gender'] === '-Chọn-') {
+        if (this.state.fields[fieldNames.gender] === '-Chọn-') {
             formIsValid = false;
-            errors['gender'] = 'Hãy chọn giới tính của bạn'
+            errors[fieldNames.gender] = 'Hãy chọn giới tính của bạn'
         }
 
         // mã nhân khẩu
-        if (!fields['registrationNumber']) {
+        if (!fields[fieldNames.regNum]) {
             formIsValid = false;
-            errors['registrationNumber'] = 'Hãy điền trường còn trống';
+            errors[fieldNames.regNum] = 'Hãy điền trường còn trống';
         }
 
-        if (typeof fields['registrationNumber'] !== 'undefined') {
-            if (!fields['registrationNumber'].match(ICregex2)) {
+        if (typeof fields[fieldNames.regNum] !== 'undefined') {
+            if (!fields[fieldNames.regNum].match(ICregex2)) {
                 formIsValid = false;
-                errors['registrationNumber'] = 'Mã không hợp lệ';
+                errors[fieldNames.regNum] = 'Mã không hợp lệ';
             }
         }
 
         // số điện thoại
-        if (typeof fields['phoneNumber'] !== 'undefined') {
-            if (!fields['phoneNumber'].match(/\d{10}/)) {
+        if (typeof fields[fieldNames.phoneNum] !== 'undefined') {
+            if (!fields[fieldNames.phoneNum].match(/\d{10}/)) {
                 formIsValid = false;
-                errors['phoneNumber'] = 'Số điện thoại không hợp lệ';
+                errors[fieldNames.phoneNum] = 'Số điện thoại không hợp lệ';
             }
         }
 
         // email
-        if (typeof fields['email'] !== 'undefined') {
+        if (typeof fields[fieldNames.email] !== 'undefined') {
             if (!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(fields.email))) {
                 formIsValid = false;
-                errors['email'] = 'Email không hợp lệ';
+                errors[fieldNames.email] = 'Email không hợp lệ';
             }
         }
         // ngày khai báo
-        if (!this.state.fields['ngayKhaiBao']) {
+        if (!this.state.fields[fieldNames.ngayKhaiBao]) {
             formIsValid = false;
-            errors['ngayKhaiBao'] = 'Chưa đặt ngày khai báo'
+            errors[fieldNames.ngayKhaiBao] = 'Chưa đặt ngày khai báo'
         }
 
         // Vùng dịch
-        if (!this.state.fields['vungDich']) {
+        if (!this.state.fields[fieldNames.vungDich]) {
             formIsValid = false;
-            errors['vungDich'] = 'Trường bắt buộc'
+            errors[fieldNames.vungDich] = 'Trường bắt buộc'
         }
 
         // symtoms
-        if (!this.state.fields['symtoms']) {
+        if (!this.state.fields[fieldNames.symtoms]) {
             formIsValid = false;
-            errors['symtoms'] = 'Chọn ngày sinh'
+            errors[fieldNames.symtoms] = 'Điền biểu hiện'
         }
         this.setState({ errors: errors });
         return formIsValid;
@@ -191,37 +194,103 @@ class Form extends React.Component {
                 <form onSubmit={this.handleSubmit} action={action} method={method}>
                     <fieldset>
                         <legend>Thông tin cá nhân</legend>
-                        <InputBar label='name' name='Họ và tên' type='text' onChange={this.handleChange} require={true} error_msg={this.state.errors['name']} val={fields['name'].toUpperCase()} />
-                        <InputBar label='dob' name='Ngày sinh' require={true} error_msg={this.state.errors['dob']} type='date' onChange={this.handleChange} val={fields.dob} end={today} />
-                        <InputBar label='identityNumber' name='CCCD/CMND' require={true} type='text' error_msg={this.state.errors['identityNumber']} onChange={this.handleChange} />
-                        <label htmlFor='gender'>Giới tính<em>(*)</em>: </label>
-                        <select id='gender' name='gender' value={this.state.fields['gender']} onChange={this.handleChange}>
+                        <InputBar
+                            label={fieldNames.name}
+                            name='Họ và tên'
+                            type='text'
+                            onChange={this.handleChange}
+                            require={true}
+                            error_msg={this.state.errors[fieldNames.name]}
+                            val={fields[fieldNames.name].toUpperCase()}
+                        />
+                        <InputBar
+                            label={fieldNames.dob}
+                            name='Ngày sinh'
+                            require={true}
+                            error_msg={this.state.errors[fieldNames.dob]}
+                            type='date'
+                            onChange={this.handleChange}
+                            val={fields.dob}
+                            end={today}
+                        />
+                        <InputBar
+                            label={fieldNames.iN}
+                            name='CCCD/CMND' require={true}
+                            type='text'
+                            error_msg={this.state.errors[fieldNames.iN]}
+                            onChange={this.handleChange}
+                        />
+                        <label htmlFor={fieldNames.gender}>Giới tính<em>(*)</em>: </label>
+                        <select
+                            id={fieldNames.gender}
+                            name={fieldNames.gender}
+                            value={this.state.fields[fieldNames.gender]}
+                            onChange={this.handleChange}
+                        >
                             <option disabled defaultValue={true} value='-Chọn-'>-Chọn-</option>
                             <option value='male'>Nam</option>
                             <option value='female'>Nữ</option>
                         </select>
-                        <span>{this.state.errors['gender']}</span>
-                        <InputBar label='registrationNumber' name='Mã nhân khẩu' type='text' onChange={this.handleChange} require={true} error_msg={this.state.errors['registrationNumber']} val={fields.registrationNumber} />
-                        <InputBar label='phoneNumber' name='Số điện thoại' onChange={this.handleChange} type='text' require={false} error_msg={this.state.errors['phoneNumber']} val={fields.phoneNumber} />
-                        {/* <PhoneInput country='vn'/>
-                        <br /> */}
-                        <InputBar label='email' name='Email' val={fields['email']} error_msg={this.state.errors['email']} type='text' require={false} onChange={this.handleChange} />
+                        <span>{this.state.errors[fieldNames.gender]}</span>
+                        <InputBar
+                            label={fieldNames.regNum}
+                            name='Mã nhân khẩu'
+                            type='text'
+                            onChange={this.handleChange}
+                            require={true}
+                            error_msg={this.state.errors[fieldNames.regNum]}
+                            val={fields[fieldNames.regNum]}
+                        />
+                        <InputBar
+                            label={fieldNames.phoneNum}
+                            name='Số điện thoại'
+                            onChange={this.handleChange}
+                            type='text'
+                            require={false}
+                            error_msg={this.state.errors[fieldNames.phoneNum]}
+                            val={fields[fieldNames.phoneNum]}
+                        />
+                        <InputBar
+                            label={fieldNames.email}
+                            name='Emails'
+                            val={fields[fieldNames.email]}
+                            error_msg={this.state.errors[fieldNames.email]}
+                            type='text'
+                            require={false}
+                            onChange={this.handleChange}
+                        />
                     </fieldset>
                     <fieldset>
                         <legend>Thông tin dịch tễ</legend>
                         <InputBar
                             type='date'
-                            val={fields.ngayKhaiBao}
-                            label='ngayKhaiBao'
+                            val={fields[fieldNames.ngayKhaiBao]}
+                            label={fieldNames.ngayKhaiBao}
                             onChange={this.handleChange}
                             require={true}
-                            error_msg={this.state.errors['ngayKhaiBao']}
+                            error_msg={this.state.errors[fieldNames.ngayKhaiBao]}
                             name='Ngày khai báo'
                             end={today}
                         />
 
-                        <InputBar label='vungDich' name='Vùng dịch' require={true} error_msg={this.state.errors['vungDich']} type='text' onChange={this.handleChange} val={fields.vungDich} />
-                        <InputBar label='symtoms' name='Biểu hiện, triệu chứng' require={true} error_msg={this.state.errors['symtoms']} onChange={this.handleChange} val={fields.symtoms} type='text' />
+                        <InputBar
+                            label={fieldNames.vungDich}
+                            name='Vùng dịch'
+                            require={true}
+                            error_msg={this.state.errors[fieldNames.vungDich]}
+                            type='text'
+                            onChange={this.handleChange}
+                            val={fields[fieldNames.vungDich]}
+                        />
+                        <InputBar
+                            label={fieldNames.symtoms}
+                            name='Biểu hiện, triệu chứng'
+                            require={true}
+                            error_msg={this.state.errors[fieldNames.symtoms]}
+                            onChange={this.handleChange}
+                            val={fields[fieldNames.symtoms]}
+                            type='text'
+                        />
                     </fieldset>
                     <FormNote>((*): Những trường bắt buộc phải điền)</FormNote>
                     <input type='submit' value='Thêm mới' />
