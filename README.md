@@ -73,7 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-# Cloning from github
+# Download a React Project from Github and Run in Your PC
 ## Step 1: Open your terminal and then type
 
 ### `git clone {the url to the GitHub repo}`
