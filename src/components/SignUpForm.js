@@ -2,7 +2,7 @@ import React from 'react'
 import Group from './Group'
 import InputBar from './InputBar'
 import Button from './Button'
-
+import FormNote from './FormNote'
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props);
@@ -94,6 +94,10 @@ class SignUpForm extends React.Component {
                 <Group>
                     <Button value='Sign up' />
                 </Group>
+                <FormNote>
+                    Tài khoản là một xâu chứa từ 7 đến 14 ký tự.
+                    Mật khẩu phải chứa ít nhất một số và một chữ cái.
+                </FormNote>
             </form>
         )
     }
