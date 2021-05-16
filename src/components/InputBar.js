@@ -3,14 +3,13 @@ import React from 'react'
 function InputBar(props) {
     return (
         <div>
-            <label htmlFor={props.label}>{props.name}{props.require ? <em>(*)</em> : null}:</label>
+            <label className={props.labelClass} htmlFor={props.label}>{props.name}{props.require ? <em>(*)</em> : null}:</label>
             {(props.type === 'date') ?
-                <input id={props.label} type={props.type} name={props.label} onChange={props.onChange} value={props.val} max={props.end}/>
+                <input id={props.label} type={props.type} name={props.label} onChange={props.onChange} value={props.val} max={props.end} className={props.inputClass} />
                 :
-                <input id={props.label} type={props.type} name={props.label} onChange={props.onChange} value={props.val} />
+                <input id={props.label} type={props.type} name={props.label} onChange={props.onChange} value={props.val} className={props.inputClass} autoComplete={props.autoComplete}/>
             }
             <span>{props.error_msg}</span>
-            <br />
         </div>
     )
 }
