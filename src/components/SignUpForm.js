@@ -89,8 +89,9 @@ class SignUpForm extends React.Component {
                     />
                 </Group>
                 {
-                    this.state.submitWarning ? <span>{this.state.msg}</span> : null
+                    this.state.submitWarning ? <span className='warning'>{this.state.msg}</span> : null
                 }
+                <br />
                 <FormNote>
                     Tài khoản là một xâu chứa từ 7 đến 14 ký tự.
                     Mật khẩu phải chứa ít nhất một số và một chữ cái.

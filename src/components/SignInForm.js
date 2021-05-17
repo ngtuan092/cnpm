@@ -31,7 +31,7 @@ class SignInForm extends React.Component {
         if (!this.handleValidation())
             alert('Errors occur!')
         else
-            alert('Submit succesfully')
+            alert('Submit successfully')
         e.preventDefault()
     }
     handleChange(e) {
@@ -70,7 +70,7 @@ class SignInForm extends React.Component {
                 {this.state.submitWarning ? <span className='warning'>Tài khoản, mật khẩu không chính xác</span> : null}
                 <Group>
                     <input id="check" type="checkbox" className="check" checked={this.state.remember} onChange={this.handleChange} name='remember' />
-                    <label htmlFor="check"><span className="icon"></span>Keep me Signed in</label>
+                    <label htmlFor="check"><span className="icon"></span> Keep me Signed in</label>
                 </Group>
                 <Button value='Submit' />
             </form>
