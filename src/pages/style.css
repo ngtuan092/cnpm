@@ -36,6 +36,7 @@ a {
   position: absolute;
   padding: 30px 50px 50px 50px;
   background-color: #d0d0d0;
+  border-radius: 5px;
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {
@@ -184,7 +185,6 @@ label.label {
   margin: 0;
 }
 body {
-  width: 100vw;
   margin: 0px auto;
   height: 41.1rem;
   font-family: "Montserrat", arial, verdana;

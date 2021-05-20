@@ -62,7 +62,7 @@
 .copyright-text {
   margin: 0;
 }
-@media (max-width: 980px) {
+@media (max-width: 992px) {
   .site-footer [class^="col-"] {
     margin-bottom: 30px;
   }

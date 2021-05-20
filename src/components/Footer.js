@@ -1,32 +1,31 @@
 import './Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faYoutube, faGithub} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faYoutube, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 
 
 function Footer(props) {
     return (
         <footer className="site-footer">
-            <div className="container">
+            <div className="container"><br /><br />
                 <div className="row">
                     <div className="col-sm-12 col-md-6">
                         <h6>Product Introduction</h6>
                         <p className='text-justify'>
-
+                            Hé cửa sổ ra mà xem.<br />
+                            Có một chàng bác sĩ đứng ở ngay nhà em.
                         </p>
                     </div>
                     <div className="col-xs-6 col-md-3">
                         <h6>About Us</h6>
                         <em id='team'>Team members</em>
-                        <p className="text-justify">
-                            <ol>
-                                <li>Nguyễn Ngọc Tuân</li>
-                                <li>Nguyễn Đồng Đức Anh</li>
-                                <li>Nguyễn Đăng Tuấn Anh</li>
-                                <li>Nguyễn Đức Tùng</li>
-                                <li>Nguyễn Huy Hoàn</li>
-                            </ol>
-                        </p>
+                        <ol>
+                            <li>Nguyễn Ngọc Tuân</li>
+                            <li>Nguyễn Đồng Đức Anh</li>
+                            <li>Nguyễn Đăng Tuấn Anh</li>
+                            <li>Nguyễn Đức Tùng</li>
+                            <li>Nguyễn Huy Hoàn</li>
+                        </ol>
                     </div>
                     <div className="col-xs-6 col-md-3">
                         <h6>Tech</h6>

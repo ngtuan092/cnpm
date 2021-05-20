@@ -9,7 +9,7 @@ function Header(props) {
                 <h2 className="management">Manager</h2>
                 <h2>App</h2>
             </div>
-            <div className="header_image_container" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/1.jpg` }} />
+            <div className="header_image_container" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/2.jpg` }} />
         </div>
     )
 }
